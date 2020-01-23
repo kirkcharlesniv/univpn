@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:univpn/styles.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,9 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: appTheme(),
       home: HomePage(),
     );
   }
@@ -24,7 +23,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: Container(
+        child: Center(child: Text('Hello World!')),
+      ),
     );
   }
 }
