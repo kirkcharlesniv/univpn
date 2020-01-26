@@ -25,10 +25,7 @@ class HomePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: SlidingUpPanel(
         backdropEnabled: true,
-        minHeight: MediaQuery
-            .of(context)
-            .size
-            .height * 0.12,
+        minHeight: MediaQuery.of(context).size.height * 0.12,
         borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
         panel: Theme(
             data: ThemeData(brightness: Brightness.light), child: Panel()),
@@ -70,7 +67,7 @@ class Panel extends StatelessWidget {
 
 class Collapsed extends StatelessWidget {
   final TextStyle textStyle =
-  TextStyle(color: Colors.black, fontWeight: FontWeight.w500);
+      TextStyle(color: Colors.black, fontWeight: FontWeight.w500);
 
   @override
   Widget build(BuildContext context) {
@@ -80,19 +77,10 @@ class Collapsed extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width * 0.125,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.0065,
+            width: MediaQuery.of(context).size.width * 0.125,
+            height: MediaQuery.of(context).size.height * 0.0065,
             margin: EdgeInsets.only(
-                bottom: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.023),
+                bottom: MediaQuery.of(context).size.height * 0.023),
             decoration: BoxDecoration(
               color: Color(0xffCFD5DE),
               borderRadius: BorderRadius.circular(25),
@@ -144,10 +132,7 @@ class Body extends StatelessWidget {
               Expanded(
                 child: Container(
                     margin: EdgeInsets.only(
-                        bottom: MediaQuery
-                            .of(context)
-                            .size
-                            .height * 0.12),
+                        bottom: MediaQuery.of(context).size.height * 0.12),
                     child: Column(
                       children: <Widget>[
                         Expanded(
