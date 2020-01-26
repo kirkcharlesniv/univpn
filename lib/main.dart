@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 void main() => runApp(MyApp());
@@ -21,11 +22,12 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, allowFontScaling: true, width: 1080, height: 1920);
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: SlidingUpPanel(
         backdropEnabled: true,
-        minHeight: MediaQuery.of(context).size.height * 0.10,
+        minHeight: ScreenUtil().setHeight(200),
         borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
         panel: Theme(
             data: ThemeData(brightness: Brightness.light), child: Panel()),
@@ -66,8 +68,10 @@ class Panel extends StatelessWidget {
 }
 
 class Collapsed extends StatelessWidget {
-  final TextStyle textStyle =
-      TextStyle(color: Colors.black, fontWeight: FontWeight.w600);
+  final TextStyle textStyle = TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w600,
+      fontSize: ScreenUtil().setSp(40));
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +83,7 @@ class Collapsed extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width * 0.125,
             height: MediaQuery.of(context).size.height * 0.0065,
-            margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.023),
+            margin: EdgeInsets.only(bottom: ScreenUtil().setHeight(30)),
             decoration: BoxDecoration(
               color: Color(0xffCFD5DE),
               borderRadius: BorderRadius.circular(25),
@@ -121,18 +124,23 @@ class Body extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Expanded(
-                flex: 1,
                 child: Column(
                   children: <Widget>[
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Status: '),
+                          Text(
+                            'Status: ',
+                            style: TextStyle(
+                                fontSize: ScreenUtil().setSp(35),
+                                fontWeight: FontWeight.w500),
+                          ),
                           Text(
                             'Not Connected',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
+                              fontSize: ScreenUtil().setSp(35),
                               color: Colors.pink,
                             ),
                           )
@@ -140,9 +148,9 @@ class Body extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      flex: 4,
+                      flex: 3,
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(ScreenUtil().setHeight(20)),
                         child: IntrinsicHeight(
                           child: AspectRatio(
                             aspectRatio: 1,
@@ -164,7 +172,8 @@ class Body extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(25),
+                                    padding: EdgeInsets.all(
+                                        ScreenUtil().setHeight(50)),
                                     child: ClipOval(
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -201,14 +210,21 @@ class Body extends StatelessWidget {
                               children: <Widget>[
                                 Expanded(
                                   child: Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: Text('Select Location')),
+                                    alignment: Alignment.bottomCenter,
+                                    child: Text(
+                                      'Select Location',
+                                      style: TextStyle(
+                                        fontSize: ScreenUtil().setSp(35),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 Expanded(
                                   flex: 2,
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 16, horizontal: 32),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: ScreenUtil().setHeight(32),
+                                        horizontal: ScreenUtil().setWidth(60)),
                                     child: Container(
                                       decoration: BoxDecoration(
                                           color: Color(0xff202A60),
@@ -220,9 +236,9 @@ class Body extends StatelessWidget {
                                         children: <Widget>[
                                           Expanded(
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 14),
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: ScreenUtil()
+                                                      .setHeight(24)),
                                               child: Center(
                                                 child: AspectRatio(
                                                   aspectRatio: 1,
@@ -242,7 +258,8 @@ class Body extends StatelessWidget {
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w600,
-                                                  fontSize: 24),
+                                                  fontSize:
+                                                      ScreenUtil().setSp(40)),
                                             ),
                                           ),
                                           Expanded(
@@ -266,8 +283,11 @@ class Body extends StatelessWidget {
                           child: IntrinsicHeight(
                             child: FractionallySizedBox(
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(32, 8, 32, 16),
+                                padding: EdgeInsets.fromLTRB(
+                                    ScreenUtil().setWidth(60),
+                                    ScreenUtil().setHeight(16),
+                                    ScreenUtil().setWidth(60),
+                                    ScreenUtil().setHeight(32)),
                                 child: Container(
                                   decoration: BoxDecoration(
                                       color: Color(0xff825FFE),
@@ -280,7 +300,8 @@ class Body extends StatelessWidget {
                                         child: AspectRatio(
                                           aspectRatio: 1,
                                           child: Padding(
-                                            padding: const EdgeInsets.all(24.0),
+                                            padding: EdgeInsets.all(
+                                                ScreenUtil().setHeight(45)),
                                             child: Center(
                                               child: Container(
                                                 decoration: BoxDecoration(
@@ -288,7 +309,7 @@ class Body extends StatelessWidget {
                                                     borderRadius:
                                                         BorderRadius.all(
                                                             Radius.circular(
-                                                                30))),
+                                                                20))),
                                               ),
                                             ),
                                           ),
@@ -302,9 +323,9 @@ class Body extends StatelessWidget {
                                           children: <Widget>[
                                             Expanded(
                                               child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 20),
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: ScreenUtil()
+                                                        .setHeight(30)),
                                                 child: Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
@@ -315,15 +336,21 @@ class Body extends StatelessWidget {
                                                     Text(
                                                         'Start your free 3 days trial',
                                                         style: TextStyle(
-                                                            fontSize: 22,
+                                                            fontSize:
+                                                                ScreenUtil()
+                                                                    .setSp(
+                                                                        42.5),
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold)),
                                                     Text(
                                                       'Go Pro to unlock all features',
                                                       style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w300),
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        fontSize: ScreenUtil()
+                                                            .setSp(32.5),
+                                                      ),
                                                     )
                                                   ],
                                                 ),
